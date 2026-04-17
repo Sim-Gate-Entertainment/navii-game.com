@@ -64,13 +64,26 @@
 
   <div class="video-wrapper">
     <iframe
-      src="https://www.youtube.com/embed/JS6yci4mBJo"
+      id="navii-trailer"
       title="Navii — Gameplay Trailer"
       referrerpolicy="strict-origin-when-cross-origin"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
   </div>
+  <script>
+    (function () {
+      var id = 'JS6yci4mBJo';
+      var origin = location.origin;
+      if (!origin || origin === 'null' || /^file:/i.test(origin)) {
+        origin = 'https://navii-game.com';
+      }
+      var u = new URL('https://www.youtube-nocookie.com/embed/' + id);
+      u.searchParams.set('origin', origin);
+      u.searchParams.set('rel', '0');
+      u.searchParams.set('modestbranding', '1');
+      document.getElementById('navii-trailer').src = u.toString();
+    })();
+  </script>
 
   <div class="store-btns">
     <a href="https://play.google.com/store/apps/details?id=by.gutovskij.navi" target="_blank" rel="noopener">
