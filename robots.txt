@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://navii-game.com/sitemap.xml
