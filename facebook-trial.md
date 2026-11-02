@@ -1,4 +1,4 @@
-# Facebook trial — drafts, not published
+# Facebook trial â€” drafts, not published
 
 Publish three posts over two weeks, after website deployment and analytics setup. Use genuine gameplay recordings: army selection, a tactical decision, and a creature ability respectively. Do not imply invented footage is gameplay.
 
@@ -20,6 +20,8 @@ https://navii-game.com/?utm_source=facebook&utm_medium=social&utm_campaign=nov20
 ## Measurement still required
 The website preserves campaign tags in Google Play install-referrer links. The navii:store-click browser event currently has no analytics destination: it does not collect or persist visits or clicks. Configure the intended web analytics property and consent handling before publishing. Apple links have no install attribution configured.
 
-Record each post’s views, link clicks, website sessions, store-button clicks and attributed first opens separately. Compare a 14-day trial with the previous 14 days. These are not interchangeable counts; avoid dividing unrelated cohorts into a conversion rate.
+Record each postâ€™s views, link clicks, website sessions, store-button clicks and attributed first opens separately. Compare a 14-day trial with the previous 14 days. These are not interchangeable counts; avoid dividing unrelated cohorts into a conversion rate.
 
 No live deployment or Facebook publication has been performed.
+
+Implementation update: web stream G-X16SVDZQ1S is connected; consent-based page views and store_click events are implemented. Deployment validation and Facebook publication are in progress.
