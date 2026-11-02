@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <link rel="canonical" href="https://navii-game.com/" />
-  <title>Navii</title>
+  <title>Navii: Slavic Tactics — Turn-based strategy for Android and iOS</title>
+  <meta name="description" content="Command creatures from Slavic folklore in Navii, a turn-based tactical game. Choose your army, plan your moves and download for Android or iOS.">
+  <meta property="og:title" content="Navii: Slavic Tactics">
+  <meta property="og:description" content="Choose your army. Plan your moves. Enter a world of Slavic folklore.">
+  <meta property="og:image" content="https://navii-game.com/images/poster.png">
+  <meta property="og:url" content="https://navii-game.com/">
+  <meta property="og:type" content="website">
   <style>
     html, body {
       margin: 0;
@@ -58,6 +64,18 @@
       border: none;
       display: block;
     }
+
+    body { min-height: 100vh; height: auto; background-attachment: fixed; color: #fff; font: 18px/1.6 system-ui, sans-serif; }
+    main { box-sizing: border-box; width: min(740px, 94%); margin: 320px auto 24px; padding: 28px; background: rgba(8,18,16,.94); border-radius: 12px; }
+    h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.15; margin-top: 0; }
+    h2 { font-size: 24px; }
+    main a { color: #c9e5c5; }
+    .store-btns { margin-bottom: 8px; }
+    @media (max-width: 640px) {
+      .video-wrapper { position: relative; top: auto; right: auto; width: 94%; margin: 20px auto 0; flex-shrink: 0; }
+      main { margin-top: 20px; padding: 22px; }
+      .store-btns a img { height: 48px; }
+    }
   </style>
 </head>
 <body>
@@ -65,7 +83,7 @@
   <div class="video-wrapper">
     <iframe
       id="navii-trailer"
-      title="Navii — Gameplay Trailer"
+      title="Navii Gameplay Trailer"
       referrerpolicy="strict-origin-when-cross-origin"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen></iframe>
@@ -85,14 +103,81 @@
     })();
   </script>
 
-  <div class="store-btns">
-    <a href="https://play.google.com/store/apps/details?id=by.gutovskij.navi" target="_blank" rel="noopener">
+  <main>
+    <h1>Slavic folklore. Turn-based tactics.</h1>
+    <p>Command your army in Navii: Slavic Tactics. Choose your creatures, plan your moves and use their abilities to outsmart your opponent.</p>
+    <div class="store-btns">
+    <a href="https://play.google.com/store/apps/details?id=by.gutovskij.navi&amp;referrer=utm_source%3Dnavii_website%26utm_medium%3Dreferral%26utm_campaign%3Devergreen" data-store="google_play" target="_blank" rel="noopener">
       <img src="images/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
     </a>
-    <a href="https://apps.apple.com/us/app/navii/id634979518" target="_blank" rel="noopener">
+    <a href="https://apps.apple.com/us/app/navii/id634979518" data-store="app_store" target="_blank" rel="noopener">
       <img src="images/App_Store_Badge_EN.svg" alt="Download on the App Store">
     </a>
   </div>
 
+    <h2>Build your army. Make every move count.</h2>
+    <p>Explore tactical board battles inspired by Slavic folklore. Watch the gameplay trailer above to see Navii in action.</p>
+    <p>Available for Android and iOS.</p>
+    <p><a href="https://www.facebook.com/NaviiPage">Follow Navii on Facebook</a></p>
+  <section aria-label="Analytics preferences">
+      <p id="analytics-status">Allow Google Analytics to measure visits and store-button clicks? You can use this site without analytics.</p>
+      <button type="button" id="analytics-allow">Allow analytics</button>
+      <button type="button" id="analytics-deny">Decline analytics</button>
+      <p><small>Analytics uses cookies and sends usage information to Google. <a href="https://policies.google.com/privacy">Google privacy information</a>. Change your choice here at any time.</small></p>
+    </section>
+  </main>
+  <script>
+    // Preserve only bounded campaign labels, never arbitrary URL parameters.
+    const incoming = new URLSearchParams(location.search);
+    const campaign = new URLSearchParams();
+    const defaults = {utm_source:'navii_website', utm_medium:'referral', utm_campaign:'evergreen'};
+    for (const key of ['utm_source','utm_medium','utm_campaign','utm_content']) {
+      const value = incoming.get(key);
+      if (value && /^[a-zA-Z0-9_.-]{1,100}$/.test(value)) campaign.set(key,value);
+      else if (defaults[key]) campaign.set(key,defaults[key]);
+    }
+    const playLink = document.querySelector('[data-store="google_play"]');
+    const destination = new URL(playLink.href);
+    destination.searchParams.set('referrer',campaign.toString());
+    playLink.href = destination.toString();
+    let analyticsEnabled = false;
+    let analyticsLoaded = false;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    function setAnalytics(allowed) {
+      analyticsEnabled = allowed;
+      window['ga-disable-G-X16SVDZQ1S'] = !allowed;
+      try { localStorage.setItem('navii_analytics', allowed ? 'yes' : 'no'); } catch (_) {}
+      document.getElementById('analytics-status').textContent = allowed ? 'Analytics is enabled. You can decline below at any time.' : 'Analytics is off. You can allow it below at any time.';
+      if (allowed && !analyticsLoaded) {
+        analyticsLoaded = true;
+        gtag('consent', 'default', {analytics_storage:'granted', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied'});
+        gtag('js', new Date());
+        gtag('config', 'G-X16SVDZQ1S', {allow_google_signals:false, allow_ad_personalization_signals:false});
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-X16SVDZQ1S';
+        document.head.appendChild(script);
+      } else if (analyticsLoaded) {
+        gtag('consent', 'update', {analytics_storage:allowed ? 'granted' : 'denied'});
+      }
+      if (!allowed) {
+        document.cookie.split(';').forEach(item => {
+          const name = item.trim().split('=')[0];
+          if (!name.startsWith('_ga')) return;
+          for (const domain of ['', ';domain=' + location.hostname, ';domain=.' + location.hostname]) {
+            document.cookie = name + '=;max-age=0;path=/' + domain;
+          }
+        });
+      }
+    }
+    document.getElementById('analytics-allow').addEventListener('click', () => setAnalytics(true));
+    document.getElementById('analytics-deny').addEventListener('click', () => setAnalytics(false));
+    try { const saved = localStorage.getItem('navii_analytics'); if (saved) setAnalytics(saved === 'yes'); } catch (_) {}
+
+    document.querySelectorAll('[data-store]').forEach(link => link.addEventListener('click', () => {
+      if (analyticsEnabled) gtag('event', 'store_click', {store:link.dataset.store, campaign_source:campaign.get('utm_source'), campaign_name:campaign.get('utm_campaign'), campaign_content:campaign.get('utm_content') || '', transport_type:'beacon'});
+    }));
+  </script>
 </body>
 </html>
