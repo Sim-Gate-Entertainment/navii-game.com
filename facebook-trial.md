@@ -25,3 +25,10 @@ Record each post’s views, link clicks, website sessions, store-button clicks a
 No live deployment or Facebook publication has been performed.
 
 Implementation update: web stream G-X16SVDZQ1S is connected; consent-based page views and store_click events are implemented. Deployment validation and Facebook publication are in progress.
+
+
+## Verified launch status — 2026-11-02
+Website deployed. GA4 web stream: Navii website, G-X16SVDZQ1S. Realtime confirms page_view and one test store_click; do not count validation traffic as campaign success. Analytics requires visitor opt-in.
+First post published: https://www.facebook.com/NaviiPage/posts/pfbid02CrFNEkg8Ec7Gve18payVLkPLn1EUExc9Qyeh7qUitXmHeSA6wpyQDZD223We2Ry5l
+Tactics post scheduled November 6 at 19:00 Europe/Warsaw. Folklore post scheduled November 10 at 19:00 Europe/Warsaw. Both verified in Facebook calendar. These are text/link posts; new gameplay clips were not produced.
+Android install attribution has not been validated with a fresh device install. Apple install attribution remains unconfigured.
